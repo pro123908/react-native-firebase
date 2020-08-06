@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
 } from 'react-native';
 
 import {
@@ -23,11 +24,30 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import analytics from '@react-native-firebase/analytics';
 
-const App: () => React$Node = () => {
+const App = () => {
+  useEffect(() => {
+    console.log('Ran');
+    analytics().setCurrentScreen('Home', 'Home');
+
+    analytics().setUserId('18');
+    analytics().setUserProperties({['username']: 'Bilal'});
+  }, []);
+
   return (
     <>
-      <StatusBar barStyle="dark-content" />
+      <View>
+        <Button
+          title="Add To Basket"
+          onPress={() =>
+            analytics().logEvent('generalEvent', {
+              item: "It's working!!!",
+            })
+          }
+        />
+      </View>
+      {/* <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
@@ -67,7 +87,7 @@ const App: () => React$Node = () => {
             <LearnMoreLinks />
           </View>
         </ScrollView>
-      </SafeAreaView>
+      </SafeAreaView> */}
     </>
   );
 };
