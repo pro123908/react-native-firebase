@@ -1,10 +1,10 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+// /**
+//  * Sample React Native App
+//  * https://github.com/facebook/react-native
+//  *
+//  * @format
+//  * @flow strict-local
+//  */
 
 import React, {useEffect} from 'react';
 import {
@@ -63,7 +63,7 @@ const App = () => {
   return (
     <>
       <View>
-        <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.FULL_BANNER} />
+        <BannerAd unitId={TestIds.BANNER} size={BannerAdSize.SMART_BANNER} />
 
         <Button
           title="Add To Basket"
@@ -159,3 +159,112 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+// import React, {useEffect, useState} from 'react';
+// import {Button} from 'react-native';
+// import {
+//   InterstitialAd,
+//   AdEventType,
+//   TestIds,
+// } from '@react-native-firebase/admob';
+
+// const adUnitId = __DEV__
+//   ? TestIds.INTERSTITIAL
+//   : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+
+// const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
+//   requestNonPersonalizedAdsOnly: true,
+//   keywords: ['fashion', 'clothing'],
+// });
+
+// function App() {
+//   const [loaded, setLoaded] = useState(false);
+
+//   useEffect(() => {
+//     const eventListener = interstitial.onAdEvent((type) => {
+//       if (type === AdEventType.LOADED) {
+//         setLoaded(true);
+//       }
+//     });
+
+//     // Start loading the interstitial straight away
+//     interstitial.load();
+
+//     // Unsubscribe from events on unmount
+//     return () => {
+//       eventListener();
+//     };
+//   }, []);
+
+//   // No advert ready to show yet
+//   if (!loaded) {
+//     return null;
+//   }
+
+//   return (
+//     <Button
+//       title="Show Interstitial"
+//       onPress={() => {
+//         interstitial.show();
+//       }}
+//     />
+//   );
+// }
+// export default App;
+
+// import React, {useEffect, useState} from 'react';
+// import {Button} from 'react-native';
+// import {
+//   RewardedAd,
+//   RewardedAdEventType,
+//   TestIds,
+// } from '@react-native-firebase/admob';
+
+// const adUnitId = __DEV__
+//   ? TestIds.REWARDED
+//   : 'ca-app-pub-xxxxxxxxxxxxx/yyyyyyyyyyyyyy';
+
+// const rewarded = RewardedAd.createForAdRequest(adUnitId, {
+//   requestNonPersonalizedAdsOnly: true,
+//   keywords: ['fashion', 'clothing'],
+// });
+
+// function App() {
+//   const [loaded, setLoaded] = useState(false);
+
+//   useEffect(() => {
+//     const eventListener = rewarded.onAdEvent((type, error, reward) => {
+//       if (type === RewardedAdEventType.LOADED) {
+//         setLoaded(true);
+//       }
+
+//       if (type === RewardedAdEventType.EARNED_REWARD) {
+//         console.log('User earned reward of ', reward);
+//       }
+//     });
+
+//     // Start loading the rewarded ad straight away
+//     rewarded.load();
+
+//     // Unsubscribe from events on unmount
+//     return () => {
+//       eventListener();
+//     };
+//   }, []);
+
+//   // No advert ready to show yet
+//   if (!loaded) {
+//     return null;
+//   }
+
+//   return (
+//     <Button
+//       title="Show Rewarded Ad"
+//       onPress={() => {
+//         rewarded.show();
+//       }}
+//     />
+//   );
+// }
+
+// export default App;
